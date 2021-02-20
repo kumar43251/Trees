@@ -1,0 +1,15 @@
+        def lca(root,p,q):
+            if root is None:
+                return None
+            if root.val==p or root.val==q:
+                return root
+            left=lca(root.left,p,q)
+            right=lca(root.right,p,q)
+            if left!=None and right!=None:
+                return root
+            elif left!=None and right==None:
+                return left
+            else:
+                return right
+        return lca(root,p,q)
+        

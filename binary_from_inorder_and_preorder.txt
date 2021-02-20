@@ -1,0 +1,19 @@
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def bt(ino,pre,ist,ie):
+            if ist>ie:
+                return None
+            root=TreeNode(pre[bt.ind])
+            bt.ind+=1
+            ind=-1
+            for i in range(ist,ie+1):
+                if ino[i]==root.val:
+                    ind=i
+                    break
+            root.left=bt(ino,pre,ist,ind-1)
+            root.right=bt(ino,pre,ind+1,ie)
+            return root
+        in_st=0
+        in_end=len(inorder)-1
+        bt.ind=0
+        ans=bt(inorder,preorder,in_st,in_end)
+        return ans
